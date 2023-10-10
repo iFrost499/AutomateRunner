@@ -1,0 +1,13 @@
+# AutomateRunner docker-compose
+ version: '3'
+
+ services:
+       server:
+               build: .
+               command: bash -c "python server/manage.py makemigrations && python server/manage.py migrate && python server/manage.py runserver 0.0.0.0:8000"
+               container_name: automaterunner
+               volumes:
+               - .:/AutomateRunner
+               ports:
+               - "8000:8000"
+
